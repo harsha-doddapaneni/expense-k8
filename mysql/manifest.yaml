@@ -8,7 +8,7 @@ metadata:
     tier: db
     project: expense
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
@@ -24,16 +24,6 @@ spec:
       containers:
       - name: mysql
         image: joindevops/mysql:v1
-        readinessProbe:
-          tcpSocket:
-            port: 3306
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 3306
-          initialDelaySeconds: 15
-          periodSeconds: 10
 ---
 kind: Service
 apiVersion: v1
